@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-class Estudantes(models.Model):
+class Estudante(models.Model):
     nome = models.CharField(max_length=100, null=False, blank=False)
     cpf = models.CharField(max_length=11, null=False, blank=False, primary_key=True)
     email = models.EmailField(max_length=100, null=False, blank=False)
