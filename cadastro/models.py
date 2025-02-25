@@ -8,6 +8,7 @@ class Estudante(models.Model):
     data_nascimento = models.DateField()
     endereco = models.CharField(max_length=100, null=False, blank=False)
     telefone = models.CharField(max_length=14, null=False, blank=False)
+    
 
 
     def __str__(self):
@@ -28,4 +29,13 @@ class Curso(models.Model):
             return self.codigo
 
       
-    
+class Matricula(models.Model):
+      Periodo = (
+            ('M', 'Manha')
+            ('T', 'Tarde')
+            ('N', 'Noite')
+      )
+
+      estudante = models.ForeignKey(Estudante,on_delete = models.CASCADE)
+      curso = models.ForeignKey(Curso,on_delete = models.CASCADE)
+      periodo = models.CharField(max_length = 1, choices = PERIODO, blank = False, null = False, default = 'M')

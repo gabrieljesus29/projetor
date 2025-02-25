@@ -1,10 +1,16 @@
-from django.shortcuts import render
-from django.http import JsonResponse
+from cadastro.models import Estudante, Curso, Matricula
+from cadastro.serializer import EstudanteSerializer, CursoSerializer, MatriculaSerializer
+from rest_framework import viewsets
 
-def estudantes(request):
-    if request.method == 'GET':
-        estudante = {
-            'id': '1234',
-            'nome': 'Maria'
-        }
-    return JsonResponse(estudante)
+class EstudanteViewSet(viewsets.ModelViewSet):
+    queryset = Estudante.objects.all()
+    serializer_class = EstudanteSerializer
+
+class CursoViewSet(viewsets.ModelViewSet):
+    queryset = Curso.objects.all()
+    serializer_class = CursoSerializer
+
+
+class MatriculaViewSet(viewsets.ModelViewSet):
+    queryset = Matricula.objects.all()
+    serializer_class = MatriculaSerializer
